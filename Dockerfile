@@ -12,3 +12,6 @@ RUN cd /mono-4.8.0 && ./configure --prefix=/opt/mono && make && make install
 
 RUN export PATH=$PATH:/opt/mono/bin && export PKG_CONFIG_PATH=/opt/mono/lib/pkgconfig && cd /xsp-4.2 && ./configure --prefix=/opt/mono && make && make install
 
+# Import root certificates
+RUN /opt/mono/bin/mozroots --import --quiet --sync
+
